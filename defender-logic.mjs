@@ -51,9 +51,11 @@ export function GetInPositionAndDefend(creep, index) {
 
     if (creep.getRangeTo(coords) < 1) {
         let closeCreeps = creep.findInRange([creep], 1).filter(x => !x.my);
+        let closeCreeps = creep.findInRange([creep], 2).filter(x => !x.my);
         if (closeCreeps.length) {
             closeCreeps.forEach(badCreep => {
                 creep.attack(badCreep);
+                creep.rangedAttack(badCreep);
             });
         }
     }
